@@ -129,18 +129,9 @@ onLoad="startthedots();MM_preloadImages('IMGS/meCLICK.gif','IMGS/contactSPIN.gif
     </tr>
     <tr>
       <td colspan="6" valign="top"><span class="style1">
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="66" height="56">
-          <param name="movie" value="IMGS/mortgages.swf">
-          <param name="quality" value="high">
-          <param name="BGCOLOR" value="#000000">
-          <embed src="IMGS/mortgages.swf" width="66" height="56" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" bgcolor="#000000"></embed>
-        </object>
+        <div class="ruffle-swf" data-swf="IMGS/mortgages.swf" style="width:66px; height:56px;"></div>
         <img src="IMGS/housething.gif" alt="mortgagescam" width="325" height="56">
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="58" height="55">
-          <param name="movie" value="IMGS/houseright_wow.swf">
-          <param name="quality" value="high">
-          <embed src="IMGS/houseright_wow.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="58" height="55"></embed>
-        </object>
+        <div class="ruffle-swf" data-swf="IMGS/houseright_wow.swf" style="width:58px; height:55px;"></div>
         <font color="#FFCF00"><kbd><samp><tt><var>AT </var></tt></samp></kbd></font></span></td>
       <td align="center"><span class="style1"><img src="IMGS/auditionad.gif" alt="great viewing" width="221" height="210"></span></td>
     </tr>
@@ -399,6 +390,19 @@ pagescroll=navDOM?pageYOffset:document.body.scrollTop
 <!--end inserted DHTML weirdness-->
 
 
+
+<script src="js/ruffle.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const ruffle = window.RufflePlayer?.newest();
+    const containers = document.querySelectorAll(".ruffle-swf");
+    containers.forEach(container => {
+      const player = ruffle.createPlayer();
+      container.appendChild(player);
+      player.load(container.dataset.swf);
+    });
+  });
+</script>
 </body>
 </html>
 
